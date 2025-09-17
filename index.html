@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,700&amp;subset=cyrillic" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&amp;subset=cyrillic" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&amp;subset=cyrillic" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i|Tinos:400,400i&amp;subset=cyrillic" rel="stylesheet">
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<style>
+* { box-sizing: border-box; }
+body, html { height: 100%; font-family: "Playfair Display"}
+body { background-color: #000000; color: #ffffff; }
+h1 { font-family: "Playfair Display"; font-size: 30px; padding: 10px 0px; margin: 0px; }
+.field-box { border: 2px solid #d0d0d0; float: left; position: relative; width: 1200px; height: 680px; }
+.field { position: relative; width: 1200px; height: 680px; }
+.field .tile { position: absolute; width: 40px; height: 40px; background-size: 100%; background-image: url(images/tile-.png); z-index: 5; }
+.field .tileW { background-image: url(images/tile-W.png); background-size: cover; }
+.field .tileE { background-image: url(images/tile-.png); z-index: 10; }
+.field .tileEN { background-image: url(images/tile-E.png); z-index: 10; }
+.field .tileP { background-image: url(images/tile-P.png); z-index: 10; }
+.field .tileHP { background-image: url(images/tile-HP.png); z-index: 9; }
+.field .tileSW { background-image: url(images/tile-SW.png); z-index: 9; }
+.field .tile .health { background-color: #ff0000; z-index: 11; position: absolute; left: 0px; top: 0px; height: 3px; }
+.field .tileP .health { background-color: #00ff00; z-index: 11; position: absolute; left: 0px; top: 0px; height: 3px; }
+.inventory-box { border: 2px solid #d0d0d0; float: left; }
+.inventory { position: relative; width: 800px; height: 32px; }
+.cl { clear: both; display: block; }
+.modal { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0, 0, 0, 0.7); z-index: 1000; display: flex; justify-content: center; align-items: center; }
+.modal-content { background: #fff; padding: 20px; border-radius: 5px; text-align: center; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); }
+.modal-content h2 { margin: 0 0 10px; color: #333; }
+.modal-content p { margin: 0 0 20px; color: #333; }
+.modal-content button { padding: 10px 20px; background: #007bff; color: #fff; border: none; border-radius: 5px; cursor:pointer }
+.modal-content button:hover { background: #0056d3; }
+</style>
+	</head>
+	<body>
+		<h1>Игровое поле</h1>
+		<div class="field-box"><div id="field" class="field"></div></div>
+		<div class="cl"></div>
+		<!--h1>Инвентарь</h1>
+		<div class="inventory-box"><div class="inventory"></div></div-->
+		<div id="game-over-modal" class="modal" style="display: none;">
+			<div class="modal-content">
+				<h2>Game Over!</h2>
+				<p>Ваше здоровье закончилось.</p>
+				<button id="restart-button-game-over">Начать заново</button>
+			</div>
+		</div>
+		<div id="victory-modal" class="modal" style="display: none;">
+			<div class="modal-content">
+				<h2>Победа!</h2>
+				<p>Вы уничтожили всех врагов!</p>
+				<button id="restart-button-victory">Начать заново</button>
+			</div>
+		</div>
+
+		<script src="js/utils.js"></script>
+		<script src="js/map.js"></script>
+		<script src="js/player.js"></script>
+		<script src="js/enemies.js"></script>
+		<script src="js/items.js"></script>
+		<script src="js/render.js"></script>
+		<script src="js/index.js"></script>
+		<script>
+			var game = new Game();
+			game.init();
+		</script>
+	</body>
+</html>
